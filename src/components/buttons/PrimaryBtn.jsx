@@ -4,7 +4,7 @@ import { Button } from 'reactstrap'
 const PrimaryBtn = (props) => {
   return (
     <>
-        <Button color="success" className='px-7 w-full my-2'>
+        <Button className='btnPrimary'>
             {props.btnName}
         </Button>
     </>

@@ -17,7 +17,7 @@ const NavbarLms = () => {
 
   return (
     <>
-      <Navbar color="faded" light>
+      <Navbar className='navbarTheme' light>
         <NavbarToggler onClick={toggleNavbar} className="me-auto" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
@@ -48,7 +48,9 @@ const NavbarLms = () => {
           </Nav>
         </Collapse>
         <Link href="/" className="me-2">
-          reactstrap
+          <div className="avatar">
+            <img src="avatar.png" alt="" />
+          </div>
         </Link>
       </Navbar>
     </>

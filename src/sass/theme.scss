@@ -1,0 +1,39 @@
+$primary-color:#008000;
+$secondary-color:#008000;
+$primary-light:#70e000;
+$secondary-light:#9ef01a;
+$accent-color:#ccff33;
+$dark-color:#081c15;
+$light-color:#d8f3dc;
+
+*{
+
+    font-family: 'Gugi', cursive;
+    font-family: 'Poppins', sans-serif;
+   
+}
+h1{
+    font-size: 40px;
+    color: $dark-color;
+}
+a{
+    text-decoration: none;
+}
+.btnPrimary{
+    width: 100%;
+    margin-bottom: 5px;
+    background: $primary-color;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    &:hover{
+        background: $primary-light;
+        color: $dark-color;
+    }
+}
+.avatar{
+    img{
+        border-radius: 50%;
+        border: 2px solid #70e000;
+        width: 40px;
+        height: 40px;
+    }
+}

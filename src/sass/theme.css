@@ -1,0 +1,31 @@
+* {
+  font-family: "Gugi", cursive;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 40px;
+  color: #081c15;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btnPrimary {
+  width: 100%;
+  margin-bottom: 5px;
+  background: #008000;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.btnPrimary:hover {
+  background: #70e000;
+  color: #081c15;
+}
+
+.avatar img {
+  border-radius: 50%;
+  border: 2px solid #70e000;
+  width: 40px;
+  height: 40px;
+}/*# sourceMappingURL=theme.css.map */

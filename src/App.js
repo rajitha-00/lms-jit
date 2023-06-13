@@ -8,7 +8,7 @@ import Teachers from "./views/Teachers";
 import ClassRooms from "./views/ClassRooms";
 import AssignClass from "./views/AssignClass";
 import AssignSubject from "./views/AssignSubject";
-
+import './app.css'
 
 function App() {
   return (
