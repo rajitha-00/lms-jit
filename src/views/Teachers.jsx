@@ -6,6 +6,7 @@ import {
   AccordionItem,
 } from 'reactstrap';
 import DataTable from '../components/DataTable';
+import TeachersForm from '../components/forms/TeachersForm';
 
 const Teachers = () => {
   const [openAccordion1, setOpenAccordion1] = useState('1');
@@ -43,7 +44,7 @@ const Teachers = () => {
         <AccordionItem>
           <AccordionHeader targetId="1">Teacher Details</AccordionHeader>
           <AccordionBody accordionId="1">
-            
+            <TeachersForm />
           </AccordionBody>
         </AccordionItem>
        

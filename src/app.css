@@ -28,4 +28,13 @@ a {
   border: 2px solid #70e000;
   width: 40px;
   height: 40px;
+}
+
+.accordion-header {
+  margin-bottom: 0;
+  background: #70e000 !important;
+}
+
+.bgHeader {
+  background: #70e000 !important;
 }/*# sourceMappingURL=app.css.map */

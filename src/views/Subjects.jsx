@@ -6,6 +6,7 @@ import {
   AccordionItem,
 } from 'reactstrap';
 import DataTable from '../components/DataTable';
+import SubjectForm from '../components/forms/SubjectForm';
 
 const Subjects = () => {
   const [openAccordion1, setOpenAccordion1] = useState('1');
@@ -42,7 +43,7 @@ const Subjects = () => {
         <AccordionItem>
           <AccordionHeader targetId="1">Subject Details</AccordionHeader>
           <AccordionBody accordionId="1">
-            
+            <SubjectForm />
           </AccordionBody>
         </AccordionItem>
        

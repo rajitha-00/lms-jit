@@ -37,3 +37,13 @@ a{
         height: 40px;
     }
 }
+.accordion-header {
+    margin-bottom: 0;
+    background: $primary-light !important;
+}
+.bgHeader{
+    background: $primary-light !important;
+}
+.flex{
+    display: flex;
+}

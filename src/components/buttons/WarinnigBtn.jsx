@@ -5,7 +5,7 @@ const WarinnigBtn = (props) => {
   return (
     <>
         <Button color="warning">
-            {btnName}
+            {props.btnName}
         </Button>
     </>
   )
