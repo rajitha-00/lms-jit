@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 
 const DataTable = (props) => {
-  const { data, headers } = props; 
+  const { data, headers } = props;
 
   return (
     <>
@@ -15,10 +15,10 @@ const DataTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              {item.map((value, columnIndex) => (
-                <td key={columnIndex}>{value}</td>
+          {data.map((item, rowIndex) => (
+            <tr key={rowIndex}>
+              {headers.map((header, columnIndex) => (
+                <td key={columnIndex}>{item[header]}</td>
               ))}
             </tr>
           ))}

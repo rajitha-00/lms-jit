@@ -9,6 +9,7 @@ import {
 import DataTable from '../components/DataTable';
 import '../sass/theme.css'
 import StudentsForm from '../components/forms/StudentsForm';
+import { getAllStudents } from '../services/student.service';
 
 
 const Students = () => {
@@ -30,16 +31,23 @@ const Students = () => {
       setOpenAccordion2(id);
     }
   };
+  const headers = ['Id','FirstName', 'LastName', 'ContactPerson', 'ContactNumber', 'Email', 'DateOfBirth', 'Age'];
 
-  const headers = ['First Name', 'Last Name', 'Contact Person ', 'Contact No', 'Email Address', 'Date of Birth', 'Age','Classroom'];
-  const data = [
-    ['John', 'Doe', 'Jane Doe', '+1234567890', 'john.doe@example.com', '1990-05-15', 33, 'Class A'],
-    ['Alice', 'Smith', 'Bob Smith', '+9876543210', 'alice.smith@example.com', '1995-09-10', 28, 'Class B'],
-    ['Michael', 'Johnson', 'Emily Johnson', '+1122334455', 'michael.johnson@example.com', '1988-11-25', 35, 'Class C'],
-    ['Sarah', 'Davis', 'Mark Davis', '+9988776655', 'sarah.davis@example.com', '1992-07-18', 31, 'Class A'],
-    ['David', 'Wilson', 'Emma Wilson', '+5544332211', 'david.wilson@example.com', '1997-03-05', 26, 'Class B']
-  ];
-
+  const [students, setStudents] = React.useState([]);
+  const getStudents = async () => {
+    const {result, error} = await getAllStudents(); 
+    if(error) {
+        console.log(error);
+    }
+    if(result){
+      console.log(result.data);
+      setStudents(result.data);
+    }
+  }
+  React.useEffect(() => {
+   
+    getStudents();
+  }, []);
 
   return (
     <>
@@ -50,10 +58,9 @@ const Students = () => {
           <AccordionItem>
             <AccordionHeader style={{ background: 'var(--primary-light)' }} targetId="1">Student Details</AccordionHeader>
             <AccordionBody accordionId="1">
-              <StudentsForm />
+              <StudentsForm reloadTable={getStudents} />
             </AccordionBody>
-          </AccordionItem>
-        
+          </AccordionItem>        
         </Accordion>
 
         <Accordion className='mt-5' open={openAccordion2} toggle={toggleAccordion2}>
@@ -61,7 +68,7 @@ const Students = () => {
             <AccordionHeader className='bgHeader' targetId="1">Exsisting Students</AccordionHeader>
             <AccordionBody accordionId="1">
               <DataTable
-              headers={headers} data={data}
+              headers={headers} data={students}
               />
             </AccordionBody>
           </AccordionItem>
