@@ -39,27 +39,32 @@ const ClassRooms = () => {
   
   return (
     <>
-      <Accordion open={openAccordion1} toggle={toggleAccordion1}>
-        <AccordionItem>
-          <AccordionHeader targetId="1">Class Details</AccordionHeader>
-          <AccordionBody accordionId="1">
-            <ClassesForm />
-          </AccordionBody>
-        </AccordionItem>
-       
-      </Accordion>
+    <div className="wrapper">
+      <div className="innerWrapper">
 
-      <Accordion className='mt-5' open={openAccordion2} toggle={toggleAccordion2}>
-        <AccordionItem>
-          <AccordionHeader targetId="1">Exsisting Classes</AccordionHeader>
-          <AccordionBody accordionId="1">
-            <DataTable
-            headers={headers} data={data}
-            />
-          </AccordionBody>
-        </AccordionItem>
-       
-      </Accordion>
+        <Accordion open={openAccordion1} toggle={toggleAccordion1}>
+          <AccordionItem>
+            <AccordionHeader targetId="1">Class Details</AccordionHeader>
+            <AccordionBody accordionId="1">
+              <ClassesForm />
+            </AccordionBody>
+          </AccordionItem>
+        
+        </Accordion>
+
+        <Accordion className='mt-5' open={openAccordion2} toggle={toggleAccordion2}>
+          <AccordionItem>
+            <AccordionHeader targetId="1">Exsisting Classes</AccordionHeader>
+            <AccordionBody accordionId="1">
+              <DataTable
+              headers={headers} data={data}
+              />
+            </AccordionBody>
+          </AccordionItem>
+        
+        </Accordion>
+      </div>
+    </div>
     </>
   )
 }

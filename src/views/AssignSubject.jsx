@@ -28,66 +28,67 @@ const AssignSubject = () => {
   ];
   return (
     <>
-      <Card>
-        <h1>Teachers details</h1>
-        <Row>
+
+        <Card>
+          <h1>Teachers details</h1>
+          <Row>
+            <Col sm={10} md={6} >
+              <Form >
+
+                <Row>
+                  <Col md={9}>
+                    <SelectForm
+                      label="Classroom"
+                      id="classroom"
+                      name="classroom"
+                      placeholder="Select Your Classroom"
+                      type="select"
+                      options={options1}
+                      defaultValue="class1"
+                    />
+                  </Col>
+                  <Col md={3}>
+                    <PrimaryBtn
+                    btnName="Save"
+                    />
+                  </Col>
+                </Row>
+              </Form>
+                
+            </Col>
+          </Row>
+        </Card>
+        <Card className='mt-5'>
+          <h1>Allocate subjects</h1>
           <Col sm={10} md={6} >
-            <Form >
+              <Form >
 
-              <Row>
-                <Col md={9}>
-                  <SelectForm
-                    label="Classroom"
-                    id="classroom"
-                    name="classroom"
-                    placeholder="Select Your Classroom"
-                    type="select"
-                    options={options1}
-                    defaultValue="class1"
-                  />
-                </Col>
-                <Col md={3}>
-                  <PrimaryBtn
-                  btnName="Save"
-                  />
-                </Col>
-              </Row>
-            </Form>
-              
-          </Col>
-        </Row>
-      </Card>
-      <Card className='mt-5'>
-        <h1>Allocate subjects</h1>
-        <Col sm={10} md={6} >
-            <Form >
-
-              <Row>
-                <Col md={9}>
-                  <SelectForm
-                    label="Subject"
-                    id="subject"
-                    name="subject"
-                    placeholder="Select Your Subject"
-                    type="select"
-                    options={options2}
-                    defaultValue="subject-1"
-                  />
-                </Col>
-                <Col md={3}>
-                  <PrimaryBtn
-                  btnName="Allocate"
-                  />
-                </Col>
-              </Row>
-            </Form>
-              
-          </Col>
-        <div className='mt-5'></div>
-        <DataTable 
-         headers={headers} data={data}
-        />
-      </Card>
+                <Row>
+                  <Col md={9}>
+                    <SelectForm
+                      label="Subject"
+                      id="subject"
+                      name="subject"
+                      placeholder="Select Your Subject"
+                      type="select"
+                      options={options2}
+                      defaultValue="subject-1"
+                    />
+                  </Col>
+                  <Col md={3}>
+                    <PrimaryBtn
+                    btnName="Allocate"
+                    />
+                  </Col>
+                </Row>
+              </Form>
+                
+            </Col>
+          <div className='mt-5'></div>
+          <DataTable 
+          headers={headers} data={data}
+          />
+        </Card>
 
     </>
   )

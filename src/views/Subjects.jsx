@@ -39,6 +39,9 @@ const Subjects = () => {
   
   return (
     <>
+    <div className="wrapper">
+      <div className="innerWrapper">
+
       <Accordion open={openAccordion1} toggle={toggleAccordion1}>
         <AccordionItem>
           <AccordionHeader targetId="1">Subject Details</AccordionHeader>
@@ -60,6 +63,8 @@ const Subjects = () => {
         </AccordionItem>
        
       </Accordion>
+      </div>
+    </div>
     </>
   )
 }

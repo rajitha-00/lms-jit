@@ -37,4 +37,28 @@ a {
 
 .bgHeader {
   background: #70e000 !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.wrapper {
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  display: flex;
+}
+.wrapper .innerWrapper {
+  max-width: 90%;
+  margin: auto;
+}
+.wrapper .formCard {
+  width: 100%;
+}
+.wrapper .cardContent {
+  width: 100% !important;
+  position: relative;
+  padding: 0px 40px;
+  max-width: 1200px;
 }/*# sourceMappingURL=app.css.map */

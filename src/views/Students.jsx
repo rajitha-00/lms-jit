@@ -43,27 +43,32 @@ const Students = () => {
 
   return (
     <>
-      <Accordion open={openAccordion1} toggle={toggleAccordion1}>
-        <AccordionItem>
-          <AccordionHeader style={{ background: 'var(--primary-light)' }} targetId="1">Student Details</AccordionHeader>
-          <AccordionBody accordionId="1">
-            <StudentsForm />
-          </AccordionBody>
-        </AccordionItem>
-       
-      </Accordion>
+    <div className="wrapper">
+      <div className="innerWrapper">
 
-      <Accordion className='mt-5' open={openAccordion2} toggle={toggleAccordion2}>
-        <AccordionItem>
-          <AccordionHeader className='bgHeader' targetId="1">Exsisting Students</AccordionHeader>
-          <AccordionBody accordionId="1">
-            <DataTable
-            headers={headers} data={data}
-            />
-          </AccordionBody>
-        </AccordionItem>
-       
-      </Accordion>
+        <Accordion open={openAccordion1} toggle={toggleAccordion1}>
+          <AccordionItem>
+            <AccordionHeader style={{ background: 'var(--primary-light)' }} targetId="1">Student Details</AccordionHeader>
+            <AccordionBody accordionId="1">
+              <StudentsForm />
+            </AccordionBody>
+          </AccordionItem>
+        
+        </Accordion>
+
+        <Accordion className='mt-5' open={openAccordion2} toggle={toggleAccordion2}>
+          <AccordionItem>
+            <AccordionHeader className='bgHeader' targetId="1">Exsisting Students</AccordionHeader>
+            <AccordionBody accordionId="1">
+              <DataTable
+              headers={headers} data={data}
+              />
+            </AccordionBody>
+          </AccordionItem>
+        
+        </Accordion>
+      </div>
+    </div>
     </>
   )
 }

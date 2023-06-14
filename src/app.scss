@@ -1,1 +1,24 @@
-@import './sass/theme.scss'
+@import './sass/theme.scss';
+
+.wrapper{
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    display: flex;
+    .innerWrapper{
+        // justify-content: center;
+        // align-items: center;
+        max-width: 90%;
+        margin: auto;
+    }
+    .formCard
+    {
+        width: 100%;
+    }
+    .cardContent{
+        width: 100% !important;
+        position: relative;
+        padding: 0px 40px;
+        max-width: 1200px;
+    }
+}
