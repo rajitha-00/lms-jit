@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import DataTable from '../components/DataTable';
 import ClassesForm from '../components/forms/ClassesForm';
+import { getAllClassrooms } from '../services/classroom.service';
 
 const ClassRooms = () => {
   const [openAccordion1, setOpenAccordion1] = useState('1');
@@ -28,20 +29,25 @@ const ClassRooms = () => {
     }
   };
 
-  const headers = ['Subject ID', 'Classroom'];
-  const data = [
-    ['1', 'Class A'],
-    ['2', 'Class B'],
-    ['3', 'Class C'],
-    ['4', 'Class D'],
-    ['5', 'Class E']
-  ];
+  const headers = ['Id', 'ClassroomName'];
+  const [classrooms, setClassrooms] = React.useState([]);
+  const getClassrooms = async () => {
+    const {result, error} = await getAllClassrooms(); 
+    if(error) {
+        console.log(error);
+    }
+    if(result){
+      console.log(result.data);
+      setClassrooms(result.data);
+    }
+  }
+  React.useEffect(() => {
+   
+    getClassrooms();
+  }, []);
   
   return (
     <>
-    <div className="wrapper">
-      <div className="innerWrapper">
-
         <Accordion open={openAccordion1} toggle={toggleAccordion1}>
           <AccordionItem>
             <AccordionHeader targetId="1">Class Details</AccordionHeader>
@@ -57,14 +63,13 @@ const ClassRooms = () => {
             <AccordionHeader targetId="1">Exsisting Classes</AccordionHeader>
             <AccordionBody accordionId="1">
               <DataTable
-              headers={headers} data={data}
+              headers={headers} data={classrooms}
               />
             </AccordionBody>
           </AccordionItem>
         
         </Accordion>
-      </div>
-    </div>
+
     </>
   )
 }

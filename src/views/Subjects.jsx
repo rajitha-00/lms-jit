@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import DataTable from '../components/DataTable';
 import SubjectForm from '../components/forms/SubjectForm';
+import { getAllSubjects } from '../services/subject.service';
 
 const Subjects = () => {
   const [openAccordion1, setOpenAccordion1] = useState('1');
@@ -28,19 +29,25 @@ const Subjects = () => {
     }
   };
 
-  const headers = ['Subject ID', 'Subject Name'];
-  const data = [
-    ['001', 'Mathematics'],
-    ['002', 'Science'],
-    ['003', 'English'],
-    ['004', 'History'],
-    ['005', 'Geography']
-  ];
+  const headers = ['Id', 'SubjectName'];
+  const [subjects, setSubjects] = React.useState([]);
+  const getSubjects = async () => {
+    const {result, error} = await getAllSubjects(); 
+    if(error) {
+        console.log(error);
+    }
+    if(result){
+      console.log(result.data);
+      setSubjects(result.data);
+    }
+  }
+  React.useEffect(() => {
+   
+    getSubjects();
+  }, []);
   
   return (
     <>
-    <div className="wrapper">
-      <div className="innerWrapper">
 
       <Accordion open={openAccordion1} toggle={toggleAccordion1}>
         <AccordionItem>
@@ -57,14 +64,12 @@ const Subjects = () => {
           <AccordionHeader targetId="1">Exsisting Subjects</AccordionHeader>
           <AccordionBody accordionId="1">
             <DataTable
-            headers={headers} data={data}
+            headers={headers} data={subjects}
             />
           </AccordionBody>
         </AccordionItem>
        
       </Accordion>
-      </div>
-    </div>
     </>
   )
 }

@@ -20,9 +20,9 @@ export const  getAllSubjects = async () => {
   });
    return res;
 }
-export const  createSubject = async (std) => {
+export const  createSubject = async (sbjct) => {
      const res = {result:null, error:null};
-    await axios.post(`${SUBJECT_BASE_URL}/create`,std)
+    await axios.post(`${SUBJECT_BASE_URL}/create`,sbjct)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;
@@ -30,9 +30,9 @@ export const  createSubject = async (std) => {
    return res;
 }
 
-export const  updateSubject = async (std) => {
+export const  updateSubject = async (sbjct) => {
      const res = {result:null, error:null};
-    await axios.put(`${STUDENT_BASE_URL}/update`,std)
+    await axios.put(`${SUBJECT_BASE_URL}/update`,sbjct)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;
