@@ -53,7 +53,7 @@ const Subjects = () => {
         <AccordionItem>
           <AccordionHeader targetId="1">Subject Details</AccordionHeader>
           <AccordionBody accordionId="1">
-            <SubjectForm />
+            <SubjectForm reloadTable={getSubjects} />
           </AccordionBody>
         </AccordionItem>
        
