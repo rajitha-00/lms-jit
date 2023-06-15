@@ -13,7 +13,6 @@ a {
 }
 
 .btnPrimary {
-  width: 100%;
   margin-bottom: 5px;
   background: #008000;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -21,6 +20,10 @@ a {
 .btnPrimary:hover {
   background: #70e000;
   color: #081c15;
+}
+
+.btnForm {
+  width: 100%;
 }
 
 .avatar img {

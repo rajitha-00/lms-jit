@@ -1,28 +1,28 @@
 import axios  from "axios";
 
-const STUDENT_BASE_URL = "https://localhost:44391/api/Student";
+const SUBJECT_BASE_URL = "https://localhost:44391/api/Subject";
 
-export const  getStudentById = async (id) => {
+export const  getSubjectById = async (id) => {
     const res = {result:null, error:null};
-     await axios.get(`${STUDENT_BASE_URL}/getStudentById/${id}`)
+     await axios.get(`${SUBJECT_BASE_URL}/getSubjectById/${id}`)
      .then((data)=> res.result = data?.data)
      .catch((err) => {
     res.error=err.message;
    });
     return res;
 }
-export const  getAllStudents = async () => {
+export const  getAllSubjects = async () => {
      const res = {result:null, error:null};
-    await axios.get(`${STUDENT_BASE_URL}/getAllStudents`)
+    await axios.get(`${SUBJECT_BASE_URL}/getAllSubjects`)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
          res.error=err.message;
   });
    return res;
 }
-export const  createStudent = async (std) => {
+export const  createSubject = async (std) => {
      const res = {result:null, error:null};
-    await axios.post(`${STUDENT_BASE_URL}/create`,std)
+    await axios.post(`${SUBJECT_BASE_URL}/create`,std)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;
@@ -30,7 +30,7 @@ export const  createStudent = async (std) => {
    return res;
 }
 
-export const  updateStudent = async (std) => {
+export const  updateSubject = async (std) => {
      const res = {result:null, error:null};
     await axios.put(`${STUDENT_BASE_URL}/update`,std)
     .then((data)=> res.result = data?.data)
@@ -39,9 +39,9 @@ export const  updateStudent = async (std) => {
   });
    return res;
 }
-export const  deleteStudent = async (id) => {
+export const  deleteSubject = async (id) => {
      const res = {result:null, error:null};
-    await axios.delete(`${STUDENT_BASE_URL}/delete/${id}`)
+    await axios.delete(`${SUBJECT_BASE_URL}/delete/${id}`)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;

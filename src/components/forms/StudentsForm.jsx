@@ -1,14 +1,13 @@
 import React from 'react';
-import { Form } from 'reactstrap';
-import { Col, Row } from 'reactstrap';
-import InputForm from '../InputForm'; // Correct the import path
-import SelectForm from '../SelectForm'; // Correct the import path
+import { Form, Col, Row } from 'reactstrap';
+import InputForm from '../InputForm'; // Corrected the import path
+import SelectForm from '../SelectForm'; // Corrected the import path
 import PrimaryBtn from '../buttons/PrimaryBtn';
 import DangerBtn from '../buttons/DangerBtn';
 import WarinnigBtn from '../buttons/WarinnigBtn';
 import { createStudent } from '../../services/student.service';
 
-const StudentsForm = ({reloadTable}) => {
+const StudentsForm = ({ reloadTable, std }) => {
   const options = [
     { label: 'Class 1', value: 'class1' },
     { label: 'Class 2', value: 'class2' },
@@ -16,52 +15,47 @@ const StudentsForm = ({reloadTable}) => {
     { label: 'Class 4', value: 'class4' },
   ];
 
-  const initialValeus ={
-    id: 0,
-    firstName: "",
-    lastName: "",
-    contactPerson: "",
-    contactNumber: 0,
-    email: "",
-    dateOfBirth: "",
-    age: 0,
-    classId: 1
+  const initialValues = {
+    id: std ? std.id : 0,
+    firstName: std ? std.firstName : '',
+    lastName: std ? std.lastName : '',
+    contactPerson: std ? std.contactPerson : '',
+    contactNumber: std ? std.contactNumber : 0,
+    email: std ? std.email : '',
+    dateOfBirth: std ? std.dateOfBirth : '',
+    age: std ? std.age : 0,
+    classId: std ? std.classId : 1,
   };
 
-  const [std, setStd] = React.useState(initialValeus);
+  const [formData, setFormData] = React.useState(initialValues);
 
- const resetForm = () => {
-  setStd(initialValeus);
- }
+  const resetForm = () => {
+    setFormData(initialValues);
+  };
 
   const saveStudent = async () => {
-    console.log("Saving studen", std);
-  
-      const {result, error} = await createStudent(std); 
-      if(error) {
-          console.log(error);
-      }
-      if(result){
-        console.log(result);   
-        alert("Student saved successfully");     
-        resetForm();
-        reloadTable(); 
-      }
-  }
+    console.log('Saving student', formData);
 
-  const setFieldValue = (e) => {  
-    if(e.target.type === "number"){
-      setStd({
-        ...std,
-        [e.target.name]: parseInt(e.target.value)
-      });
-    }else{
-      setStd({
-        ...std,
-        [e.target.name]: e.target.value
-      });
+    const { result, error } = await createStudent(formData);
+    if (error) {
+      console.log(error);
     }
-  }
+    if (result) {
+      console.log(result);
+      alert('Student saved successfully');
+      resetForm();
+      reloadTable();
+    }
+  };
+
+  const setFieldValue = (e) => {
+    const { name, value, type } = e.target;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === 'number' ? parseInt(value) : value,
+    }));
+  };
 
   return (
     <>
@@ -74,6 +68,7 @@ const StudentsForm = ({reloadTable}) => {
               name="firstName"
               placeholder="Enter Your First Name"
               type="text"
+              value={formData.firstName}
               onChange={setFieldValue}
             />
           </Col>
@@ -84,6 +79,7 @@ const StudentsForm = ({reloadTable}) => {
               name="lastName"
               placeholder="Enter Your Last Name"
               type="text"
+              value={formData.lastName}
               onChange={setFieldValue}
             />
           </Col>
@@ -94,6 +90,7 @@ const StudentsForm = ({reloadTable}) => {
               name="contactPerson"
               placeholder="Enter Your Contact Person"
               type="text"
+              value={formData.contactPerson}
               onChange={setFieldValue}
             />
           </Col>
@@ -104,6 +101,7 @@ const StudentsForm = ({reloadTable}) => {
               name="contactNumber"
               placeholder="Enter Your Contact No"
               type="number"
+              value={formData.contactNumber}
               onChange={setFieldValue}
             />
           </Col>
@@ -114,6 +112,7 @@ const StudentsForm = ({reloadTable}) => {
               name="email"
               placeholder="Enter Your Email Address"
               type="email"
+              value={formData.email}
               onChange={setFieldValue}
             />
           </Col>
@@ -124,6 +123,7 @@ const StudentsForm = ({reloadTable}) => {
               name="dateOfBirth"
               placeholder="Enter Your Date of Birth"
               type="date"
+              value={formData.dateOfBirth}
               onChange={setFieldValue}
             />
           </Col>
@@ -134,6 +134,7 @@ const StudentsForm = ({reloadTable}) => {
               name="age"
               placeholder="Enter Your Age"
               type="number"
+              value={formData.age}
               onChange={setFieldValue}
             />
           </Col>
@@ -144,8 +145,9 @@ const StudentsForm = ({reloadTable}) => {
               name="classId"
               placeholder="Select Your Classroom"
               type="select"
+              value={formData.classId}
               options={options}
-              defaultValue="class1"
+              onChange={setFieldValue}
             />
           </Col>
         </Row>
@@ -155,12 +157,10 @@ const StudentsForm = ({reloadTable}) => {
             <PrimaryBtn btnName="Add" onClick={saveStudent} />
           </Col>
           <Col md={3}>
-            <DangerBtn btnName="Delete"/>
-
+            <DangerBtn btnName="Delete" />
           </Col>
           <Col md={3}>
-            <WarinnigBtn btnName="Reset"/>
-
+            <WarinnigBtn btnName="Reset" onClick={resetForm} />
           </Col>
         </Row>
       </Form>

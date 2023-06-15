@@ -4,7 +4,7 @@ import { Button } from 'reactstrap'
 const WarinnigBtn = (props) => {
   return (
     <>
-        <Button color="warning">
+        <Button className='btnForm' color="warning">
             {props.btnName}
         </Button>
     </>
