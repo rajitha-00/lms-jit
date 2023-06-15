@@ -13,16 +13,16 @@ export const  getTeacherById = async (id) => {
 }
 export const  getAllTeachers = async () => {
      const res = {result:null, error:null};
-    await axios.get(`${TEACHER_BASE_URL}/getAllTachers`)
+    await axios.get(`${TEACHER_BASE_URL}/getAllTeachers`)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
          res.error=err.message;
   });
    return res;
 }
-export const  createTeacher = async (std) => {
+export const  createTeacher = async (tchr) => {
      const res = {result:null, error:null};
-    await axios.post(`${TEACHER_BASE_URL}/create`,std)
+    await axios.post(`${TEACHER_BASE_URL}/create`,tchr)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;
@@ -30,9 +30,9 @@ export const  createTeacher = async (std) => {
    return res;
 }
 
-export const  updateTeacher = async (std) => {
+export const  updateTeacher = async (tchr) => {
      const res = {result:null, error:null};
-    await axios.put(`${STUDENT_BASE_URL}/update`,std)
+    await axios.put(`${TEACHER_BASE_URL}/update`,tchr)
     .then((data)=> res.result = data?.data)
     .catch((err) => {
    res.error=err.message;

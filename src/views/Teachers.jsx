@@ -7,6 +7,7 @@ import {
 } from 'reactstrap';
 import DataTable from '../components/DataTable';
 import TeachersForm from '../components/forms/TeachersForm';
+import { getAllTeachers } from '../services/teacher.service';
 
 const Teachers = () => {
   const [openAccordion1, setOpenAccordion1] = useState('1');
@@ -28,15 +29,23 @@ const Teachers = () => {
     }
   };
 
-  const headers = ['First Name', 'Last Name', 'Contact No', 'Email Address'];
-  const data = [
-    ['John', 'Doe', '+1234567890', 'john.doe@example.com'],
-    ['Alice', 'Smith', '+9876543210', 'alice.smith@example.com'],
-    ['Michael', 'Johnson', '+1122334455', 'michael.johnson@example.com'],
-    ['Sarah', 'Davis', '+9988776655', 'sarah.davis@example.com'],
-    ['David', 'Wilson', '+5544332211', 'david.wilson@example.com']
-  ];
-  
+  const headers = ['Id','FirstName', 'LastName', 'ContactNumber', 'Email'];
+
+  const [teachers, setTeachers] = React.useState([]);
+  const getTeachers = async () => {
+    const {result, error} = await getAllTeachers(); 
+    if(error) {
+        console.log(error);
+    }
+    if(result){
+      console.log(result.data);
+      setTeachers(result.data);
+    }
+  }
+  React.useEffect(() => {
+   
+    getTeachers();
+  }, []);
 
   return (
     <>
@@ -46,7 +55,7 @@ const Teachers = () => {
           <AccordionItem>
             <AccordionHeader targetId="1">Teacher Details</AccordionHeader>
             <AccordionBody accordionId="1">
-              <TeachersForm />
+              <TeachersForm  reloadTable={getTeachers}/>
             </AccordionBody>
           </AccordionItem>
         
@@ -57,7 +66,7 @@ const Teachers = () => {
             <AccordionHeader targetId="1">Exsisting Teachers</AccordionHeader>
             <AccordionBody accordionId="1">
               <DataTable
-              headers={headers} data={data}
+              headers={headers} data={teachers}
               />
             </AccordionBody>
           </AccordionItem>
